@@ -18,7 +18,7 @@ const Navbar = ({containerStyles,setMenuOpened}) => {
     <nav className={containerStyles}>
       {navItems.map(({to,label,icon}) =>(
         <div key={label}>
-          <NavLink to={to} className={({isActive}) => `${isActive ? "bg-white ring-1 ring-slate-900/10": ""} flexCenter gap-x-2 px-3 py-2 rounded-full`}>
+          <NavLink onClick={()=>setMenuOpened(false)} to={to} className={({isActive}) => `${isActive ? "bg-white ring-1 ring-slate-900/10": ""} flexCenter gap-x-2 px-3 py-2 rounded-full`}>
             <span className='text-x1'>{icon}</span>
             <span className='medium-16'>{label}</span>
           </NavLink>

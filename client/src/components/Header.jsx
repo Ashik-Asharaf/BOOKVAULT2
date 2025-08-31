@@ -37,18 +37,20 @@ const Header = () => {
            "hidden lg:flex gap-x-5 x1:gap-x-7 medium-15 ring-1 ring-1 ring-slate-900/15 rounded-full p-1 bg-primary"}`} />
       </div>
       
-        <div className="flex sm:flex-1 items-center">
+        <div className="flex sm:flex-1 items-center sm:justify-end  gap-x-4 sm:gap-x-8">
             {/* SEARCHBAR */}
-            <div className='relative'> 
+            <div className='flex x1:flex items-center '> 
               {/* Toggle input */}
-              <div>
-                <input type="text" placeholder='Search book...'/>
+              <div className={`bg-white ring-1 ring-slate-900/10 rounded-full overflow-hidden transition-all duration-300 ease-in-out ${showSearch ?
+                 "w-[266px] opacity-100 px-4 py-2.5" : "w-0 opacity-0 p-0"}`}>
+                 <input type="text" placeholder='Search book...' 
+                 className='bg-transparent w-full text-sm outline-none pr-10 placeholder:text-gray-400'/>
               </div>
               {/* toggle button */}
-              <div>
+              <div onClick={()=>setShowSearch(prev=>!prev)} className='absolute right-43 bg-primary p-2.5 rounded-full cursor-pointer z-10'>
               <FaSearch className='text-x1'/>
               </div>
-        </div>
+            </div>
         {/* MENU TOGGLE */}
         <>
         {menuOpened ? (
@@ -61,24 +63,26 @@ const Header = () => {
         </>
         {/* CART */}
         <Link to={'/cart'} className='flex relative'>
-        <div>
-          Cart <span>0</span>
+        <div className='bold-16'>
+          Cart <span className='bg-secondary text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flexCenter w-4 h-4 rounded-full shadow-md'>0</span>
         </div>
         </Link>
         {/* USER PROFILE */}
-        <div>
-          <div>
+        <div className='group relative'>
+          <div className=''>
             {user ? (
-              <div className='flex gap-2'>
+              <div className='flex gap-2 items-center cursor-pointer rounded-full bg-white'>
                 <img src={userImg} alt="" height={44} width={44} />
               </div>
             ):(
-              <button className='btn-light flexCenter'>Login <RiUserLine className='text-xl' /></button>
+              <button className='btn-light flexCenter gap-x-2'>
+                Login 
+                <RiUserLine className='text-xl' /></button>
             )}
           </div>
           {/* DROPDOWN */}
           {user && 
-          (<ul>
+          (<ul className='bg-white p-2 w-32 ring-1 ring-slate-900/5 rounded absolute right-0 top-10 hidden group-hover:flex flex-col medium-14 shadow-md z-50'>
             <li onClick={()=>navigate('/my-orders')} className="p-2 rounded-md hover:bg-primary cursor-pointer">Orders</li>
             <li  className="p-2 rounded-md hover:bg-primary cursor-pointer">Logout</li>
    
