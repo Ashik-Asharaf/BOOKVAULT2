@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link,useLocation, useNavigate } from 'react-router-dom'
 import logoImg from '../assets/logo.png'
 import userImg from '../assets/user.png'
@@ -9,14 +9,13 @@ import {RiUserLine} from 'react-icons/ri'
 // import {FiShoppingCart} from 'react-icons/fi'
 import Navbar from './Navbar';
 import Cart from './../pages/Cart';
+import { ShopContext } from '../context/ShopContext'
 
 const Header = () => {
 
   const[menuOpened,setMenuOpened] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-  const [user, setUser] = useState(true)
-  const navigate = useNavigate()
-
+  const {navigate,user,setUser}= useContext(ShopContext)
   const toggleMenu = () => {
     setMenuOpened(prev=>!prev)
   }
@@ -39,18 +38,35 @@ const Header = () => {
       
         <div className="flex sm:flex-1 items-center sm:justify-end  gap-x-4 sm:gap-x-8">
             {/* SEARCHBAR */}
-            <div className='flex x1:flex items-center '> 
-              {/* Toggle input */}
-              <div className={`bg-white ring-1 ring-slate-900/10 rounded-full overflow-hidden transition-all duration-300 ease-in-out ${showSearch ?
-                 "w-[266px] opacity-100 px-4 py-2.5" : "w-0 opacity-0 p-0"}`}>
-                 <input type="text" placeholder='Search book...' 
-                 className='bg-transparent w-full text-sm outline-none pr-10 placeholder:text-gray-400'/>
-              </div>
-              {/* toggle button */}
-              <div onClick={()=>setShowSearch(prev=>!prev)} className='absolute right-43 bg-primary p-2.5 rounded-full cursor-pointer z-10'>
-              <FaSearch className='text-x1'/>
-              </div>
-            </div>
+            <div className='flex items-center'>
+  {/* Toggle input and icon together */}
+  <div className={`flex items-center bg-white ring-1 ring-slate-900/10 rounded-full overflow-hidden transition-all duration-300 ease-in-out
+    ${showSearch ? "w-[180px] sm:w-[266px] opacity-100 px-3 py-2" : "w-0 opacity-0 p-0"}`}>
+    <input
+      type="text"
+      placeholder="Search book..."
+      className="bg-transparent w-full text-sm outline-none pr-2 placeholder:text-gray-400"
+    />
+    <button
+      onClick={() => setShowSearch(prev => !prev)}
+      className="bg-primary p-2 rounded-full cursor-pointer ml-2 flex items-center justify-center"
+      tabIndex={-1}
+      type="button"
+    >
+      <FaSearch className="text-x1 text-black" />
+    </button>
+  </div>
+  {/* Show only icon when search is closed */}
+  {!showSearch && (
+    <button
+      onClick={() => setShowSearch(true)}
+      className="bg-primary p-2.5 rounded-full cursor-pointer ml-2 flex items-center justify-center"
+      type="button"
+    >
+      <FaSearch className="text-x1 text-black" />
+    </button>
+  )}
+</div>
         {/* MENU TOGGLE */}
         <>
         {menuOpened ? (
