@@ -1,8 +1,14 @@
 import React from 'react'
 
 const Achievements = () => {
+
+  const statistics = [
+
+    {label : "Happy clients"}
+  ]
+
   return (
-    <div>Achievements</div>
+    <div></div>
   )
 }
 

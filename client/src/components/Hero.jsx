@@ -39,7 +39,7 @@ const Hero = () => {
             <h3 className='bold-24 text-secondary font-thin'>Explore Books You'll Love</h3>
             <h1 className='h1 max-w-[699px] !font-[800] leading-none'>Find Your Next Book</h1>
             <h2 className='capitalize h2 tracking-wider'>Upto 40% Off This Week</h2>
-            <p className='max-w-xl pt-5'>Discover and explore a wide collection
+            <p className='max-w-132 pt-5'>Discover and explore a wide collection
                of books across genres, from timeless 
                classics to the latest releases. Our 
                website makes it easy to find, read, and 
