@@ -14,7 +14,7 @@ const Categories = () => {
     {/* CONTAINER */}
     <div className='flex gap-9 flex-wrap'>
       {categories.map((cat,index)=>(
-        <div key={index} onClick={()=>navigate(`/shop/${cat,name.toLowerCase()}`)} className= 'flexCenter flex-col cursor-pointer group'>
+        <div key={index} onClick={()=>navigate(`/shop/${cat.name.toLowerCase()}`)} className= 'flexCenter flex-col cursor-pointer group'>
           <div className={`flexCenter flex-col h-32 w-32 sm:h-36 sm:w-36 rounded-xl ${colors[index % 3]}`}>
             <img src={cat.image} alt={cat.name} height={46} width={46}
             className='object-cover' />

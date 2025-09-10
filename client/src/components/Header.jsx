@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link,useLocation, useNavigate } from 'react-router-dom'
 import logoImg from '../assets/logo.png'
 import userImg from '../assets/user.png'
@@ -15,10 +15,16 @@ const Header = () => {
 
   const[menuOpened,setMenuOpened] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-  const {navigate,user,setUser}= useContext(ShopContext)
-  const toggleMenu = () => {
+  const {navigate,user,setUser,searchQuery,setSearchQuery}= useContext(ShopContext)
+  const isShopPage = useLocation().pathname.endsWith('/shop');
+  const toggleMenu = () => 
     setMenuOpened(prev=>!prev)
-  }
+
+  useEffect(() => {
+    if (searchQuery.length > 0 && !isShopPage) {
+      navigate('/shop');
+    }
+  }, [searchQuery, ]);
 
   return (
     <header className='absolute top-0 left-0 right-0 max-padd-container flexBetween gap-4 py-2'>
@@ -26,7 +32,7 @@ const Header = () => {
       <div className='flex flex-1'>
     <Link to={'/'} className="bold-22  x1:bold-28 flex item-end gap-1" >
     <img src={logoImg} alt=""  className='hidden sm:block h-9'/>
-    <div  className="sm:relative top-1.5" >BookVault<span className='text-secondary'>a.</span></div>
+    <div  className="sm:relative top-1.5" >BookVaul<span className='text-secondary'>t.</span></div>
     </Link>
       </div>
       {/* NAVBAR FOR DESKTOP & MOBILE */}
@@ -41,8 +47,12 @@ const Header = () => {
             <div className='flex items-center'>
   {/* Toggle input and icon together */}
   <div className={`flex items-center bg-white ring-1 ring-slate-900/10 rounded-full overflow-hidden transition-all duration-300 ease-in-out
-    ${showSearch ? "w-[180px] sm:w-[266px] opacity-100 px-3 py-2" : "w-0 opacity-0 p-0"}`}>
+    ${showSearch ? 
+    "w-[180px] sm:w-[266px] opacity-100 px-3 py-2" 
+    : "w-0 opacity-0 p-0"}`}>
+
     <input
+      onChange={(e)=>setSearchQuery(e.target.value)}
       type="text"
       placeholder="Search book..."
       className="bg-transparent w-full text-sm outline-none pr-2 placeholder:text-gray-400"

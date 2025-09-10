@@ -1,0 +1,17 @@
+Press Ctrl + Shift + P (Windows/Linux) or Cmd + Shift + P (macOS) to open the Command Palette.
+Type "Toggle Word Wrap" and select the "View: Toggle Word Wrap" command.
+Alternatively, you can use the shortcut
+****** Alt + Z  *******
+ (Windows/Linux) or Option + Z (macOS) to directly toggle word wrap.
+
+
+Typing on multiple lines simultaneously in VS Code is achieved through the use of multiple cursors. This functionality allows you to edit content at several distinct locations within your file at the same time.
+Here are the primary methods for creating and using multiple cursors: 
+Adding Cursors on Consecutive Lines:
+Place your cursor on the first line you want to edit.
+Windows: Press and hold
+******** Ctrl + Alt and use the Down Arrow or Up Arrow **********
+
+ keys to add cursors to the lines below or above, respectively.
+macOS: Press and hold Option (⌥) + Command (⌘) and use the Down Arrow or Up Arrow keys.
+Linux: Press and hold Shift + Alt and use the Down Arrow or Up Arrow keys.
