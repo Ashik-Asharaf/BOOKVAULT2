@@ -7,7 +7,10 @@ const Item = ({book,fromHero}) => {
   const {navigate,currency} = useContext(ShopContext)
 
   return book? (
-    <div className={`overflow-hidden sm:p-4 ${fromHero ? "bg-white": "sm:bg-primary"} rounded-xl`}>
+    <div onClick={()=>{
+      navigate(`/shop/${book.category}/${book._id}`)
+    }}
+     className={`overflow-hidden sm:p-4 ${fromHero ? "bg-white": "sm:bg-primary"} rounded-xl`}>
       {/* IMAGE */}
       <div className='overflow-hidden rounded-xl shadow-[0px_0px_2px_0px_rgba(0,0,0,0.1)] '>
         <img src={book.image} alt="book.name" 
