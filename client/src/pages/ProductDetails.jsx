@@ -43,7 +43,7 @@ const ProductDetails = () => {
           </div>
         </div>
         {/* INFO */}
-        <div className=' px-5 px-5 py-3 w-full bg-primary rounded-xl'>
+        <div className=' pt-5 px-5 py-3 w-full bg-primary rounded-xl'>
           <h3 className="h3 leading-none">{book.name}</h3>
           <div className='flex items-center gap-x-2 pt-2'>
             <div className='flex gap-x-2 text-yellow-400'>
