@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { TbHeart,  TbShoppingBagPlus, TbStarFilled, TbStarHalfFilled } from 'react-icons/tb';
 import { FaTruck } from 'react-icons/fa';
+import ProductDescription from '../components/ProductDescription';
+import ProductFeatures from '../components/ProductFeatures';
+import RelatedBooks from '../components/RelatedBooks';
 
 const ProductDetails = () => {
   const {books,currency}= useContext(ShopContext)
@@ -43,7 +46,7 @@ const ProductDetails = () => {
           </div>
         </div>
         {/* INFO */}
-        <div className=' pt-5 px-5 py-3 w-full bg-primary rounded-xl'>
+        <div className=' pt-5 px-5 py-3 w-full bg-primary rounded-xl pt-8'>
           <h3 className="h3 leading-none">{book.name}</h3>
           <div className='flex items-center gap-x-2 pt-2'>
             <div className='flex gap-x-2 text-yellow-400'>
@@ -75,6 +78,9 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <ProductDescription/> 
+      <ProductFeatures/> 
+      <RelatedBooks/>
     </div>
     )
   )
