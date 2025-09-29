@@ -15,7 +15,7 @@ const Header = () => {
 
   const[menuOpened,setMenuOpened] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-  const {navigate,user,setUser,searchQuery,setSearchQuery}= useContext(ShopContext)
+  const {navigate,user,setUser,searchQuery,setSearchQuery,getCartCount }= useContext(ShopContext)
   const isShopPage = useLocation().pathname.endsWith('/shop');
   const toggleMenu = () => 
     setMenuOpened(prev=>!prev)
@@ -90,7 +90,8 @@ const Header = () => {
         {/* CART */}
         <Link to={'/cart'} className='flex relative'>
         <div className='bold-16'>
-          Cart <span className='bg-secondary text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flexCenter w-4 h-4 rounded-full shadow-md'>0</span>
+          Cart{" "} <span className='bg-secondary text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flexCenter w-4 h-4 rounded-full shadow-md'>
+            {getCartCount()}</span>
         </div>
         </Link>
         {/* USER PROFILE */}

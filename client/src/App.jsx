@@ -9,6 +9,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Cart from './pages/Cart';
 
 
 
@@ -24,6 +25,9 @@ const App = () => {
           <Route path='/shop/:category/:id' element={<ProductDetails/>} />
           <Route path='/blog' element={<Blog/>} />
           <Route path='/contact' element={<Contact/>} />
+          <Route path='/cart' element={<Cart/>} />
+          {/* <Route path='/login' element={<Login/>} /> */}
+          {/* <Route path='/signup' element={<Signup/>} /> */}
 
       </Routes>
       <Footer />

@@ -4,7 +4,7 @@ import { ShopContext } from '../context/ShopContext'
 
 const Item = ({book,fromHero}) => {
 
-  const {navigate,currency} = useContext(ShopContext)
+  const {navigate,currency, addToCart} = useContext(ShopContext)
 
   return book? (
     <div onClick={()=>{
@@ -24,7 +24,7 @@ const Item = ({book,fromHero}) => {
         </div>
         <div className='flex justify-between items-start gap-2 mt-1'>
           <p className='line-clamp-2'>{book.description}</p>
-          <button className='cursor-pointer'><TbShoppingBagPlus className="text-x1" /></button>
+          <button onClick={(e)=>{addToCart(book._id ); e.stopPropogation}} className='cursor-pointer'><TbShoppingBagPlus className="text-x1" /></button>
         </div>
       </div>
     </div>

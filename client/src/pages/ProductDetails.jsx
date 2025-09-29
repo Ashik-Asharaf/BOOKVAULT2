@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { use, useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { TbHeart,  TbShoppingBagPlus, TbStarFilled, TbStarHalfFilled } from 'react-icons/tb';
@@ -8,7 +8,7 @@ import ProductFeatures from '../components/ProductFeatures';
 import RelatedBooks from '../components/RelatedBooks';
 
 const ProductDetails = () => {
-  const {books,currency}= useContext(ShopContext)
+  const {books,currency, addToCart, cartItems}= useContext(ShopContext)
   const {id} = useParams();
 
   const book = books.find((b) => b._id === id)
@@ -19,6 +19,10 @@ const ProductDetails = () => {
       setImage(book.image[0])
     }
   },[book])
+
+  useEffect(()=>{
+    console.log(cartItems)
+  },[cartItems])
 
   return (
     book && (
@@ -64,7 +68,7 @@ const ProductDetails = () => {
           </div>
           <p className='max-w-[555px]'>{book.description}</p>
           <div className='flex items-center gap-x-4 mt-6'>
-            <button className='btn-dark sm:w-1/2 flexCenter gap-x-2 capitalize !rounded-md'>Add to cart <TbShoppingBagPlus/></button>
+            <button onClick={()=>addToCart(book._id )} className='btn-dark sm:w-1/2 flexCenter gap-x-2 capitalize !rounded-md'>Add to cart <TbShoppingBagPlus/></button>
             <button className='btn-secondary !rounded-md'><TbHeart className='text-xl'/></button>
           </div>
           <div className='flex items-center gap-x-2 mt-3'>  
@@ -79,8 +83,8 @@ const ProductDetails = () => {
         </div>
       </div>
       <ProductDescription/> 
-      <ProductFeatures/> 
-      <RelatedBooks/>
+      <ProductFeatures  /> 
+      <RelatedBooks book={book} id={id} />
     </div>
     )
   )

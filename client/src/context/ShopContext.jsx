@@ -13,6 +13,7 @@ const ShopContextProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [searchQuery, setSearchQuery] = useState("")
     const currency = import.meta.env.VITE_CURRENCY
+    const [cartItems, setCartItems] = useState({}) //{itemId: quantity}
 
 //fetch all books
 
@@ -20,12 +21,63 @@ const fetchBooks= ()=> {
     setBooks(dummyBooks)
 }
 
+
+//Adding Books to Cart
+const addToCart = (itemId) => {
+    const cartData = {...cartItems}//use shallow copy
+
+    if(cartData[itemId]){
+        cartData[itemId] += 1
+    }else{
+        cartData[itemId] = 1
+    }
+
+    setCartItems(cartData)
+    
+}
+
+//Getting total cart Items
+const getCartCount = () => {
+    let totalCount = 0
+    for(const itemId in cartItems){
+        try {
+            if (cartItems[itemId] > 0) {
+                totalCount += cartItems[itemId]
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    return totalCount
+}
+
+// Update the quantity of items
+
+const updateQuantity = (itemId, quantity) => {
+    const cartData = {...cartItems} //shallow copy
+    cartData[itemId] = quantity
+    setCartItems(cartData) 
+}
+
+//Get total cart amount
+const getCartAmount = () => {
+    let totalAmount = 0
+    for(const itemId in cartItems){
+        if(cartItems[itemId] > 0){
+            let itemInfo = books.find((book)=> book.id === itemId)
+            if(itemInfo){
+                totalAmount += cartItems[itemId] * itemInfo.offerPrice
+            }
+        }
+    }
+    return totalAmount
+}
 useEffect(()=>{
     fetchBooks()
 },[])
 
 
-    const value={books,navigate,user,setUser,currency,searchQuery,setSearchQuery} 
+    const value={books,navigate,user,setUser,currency,searchQuery,setSearchQuery,cartItems,setCartItems,addToCart,getCartCount,updateQuantity,getCartAmount} 
 
   return (
     <ShopContext.Provider  value={value}>
