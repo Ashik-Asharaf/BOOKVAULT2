@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Cart from './pages/Cart';
+import AddressForm from './pages/AddressForm';
 
 
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/blog' element={<Blog/>} />
           <Route path='/contact' element={<Contact/>} />
           <Route path='/cart' element={<Cart/>} />
+          <Route path='/address-form' element={<AddressForm/>} />
           {/* <Route path='/login' element={<Login/>} /> */}
           {/* <Route path='/signup' element={<Signup/>} /> */}
 

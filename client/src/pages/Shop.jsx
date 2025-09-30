@@ -65,7 +65,7 @@ const Shop = () => {
             onClick={() => setCurrPage(index + 1)}
             className={`btn-light bold-15 !py-3 !px-7 ${currPage === index + 1 ? " bg-secondary text-white" : ""}`}
           >
-            {index + 1}
+            {index + 1} 
           </button>
         ))}
         <button
