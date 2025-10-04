@@ -11,12 +11,15 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Cart from './pages/Cart';
 import AddressForm from './pages/AddressForm';
+import MyOrders from './pages/MyOrders';
+import Login from './components/Login';
 
 
 
 const App = () => {
   return (
     <main>
+      {showUserLogin && <Login />}
       <Header />
       <Toaster position='bottom-right' />
       <Routes>
@@ -28,6 +31,7 @@ const App = () => {
           <Route path='/contact' element={<Contact/>} />
           <Route path='/cart' element={<Cart/>} />
           <Route path='/address-form' element={<AddressForm/>} />
+          <Route path='/my-orders' element={<MyOrders/>} />
           {/* <Route path='/login' element={<Login/>} /> */}
           {/* <Route path='/signup' element={<Signup/>} /> */}
 
