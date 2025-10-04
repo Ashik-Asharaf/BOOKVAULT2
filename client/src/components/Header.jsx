@@ -15,7 +15,7 @@ const Header = () => {
 
   const[menuOpened,setMenuOpened] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
-  const {navigate,user,setUser,searchQuery,setSearchQuery,getCartCount }= useContext(ShopContext)
+  const {navigate,user,setUser,searchQuery,setSearchQuery,getCartCount, setShowUserlogin }= useContext(ShopContext)
   const isShopPage = useLocation().pathname.endsWith('/shop');
   const toggleMenu = () => 
     setMenuOpened(prev=>!prev)
@@ -96,13 +96,15 @@ const Header = () => {
         </Link>
         {/* USER PROFILE */}
         <div className='group relative'>
-          <div className=''>
+          <div className=''> 
             {user ? (
               <div className='flex gap-2 items-center cursor-pointer rounded-full bg-white'>
                 <img src={userImg} alt="" height={44} width={44} />
               </div>
             ):(
-              <button className='btn-light flexCenter gap-x-2'>
+              <button
+               onClick={() =>setShowUserlogin(true)} 
+               className='btn-light flexCenter gap-x-2'>
                 Login 
                 <RiUserLine className='text-xl' /></button>
             )}

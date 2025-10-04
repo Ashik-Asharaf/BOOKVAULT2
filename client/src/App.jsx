@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { Routes,Route } from 'react-router-dom'
 import Home from './pages/Home'
@@ -13,13 +13,15 @@ import Cart from './pages/Cart';
 import AddressForm from './pages/AddressForm';
 import MyOrders from './pages/MyOrders';
 import Login from './components/Login';
+import { ShopContext } from './context/ShopContext';
 
 
 
 const App = () => {
+  const {showUserlogin}=useContext(ShopContext)
   return (
     <main>
-      {showUserLogin && <Login />}
+      {showUserlogin && <Login />}
       <Header />
       <Toaster position='bottom-right' />
       <Routes>
