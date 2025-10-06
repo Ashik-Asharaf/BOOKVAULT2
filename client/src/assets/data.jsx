@@ -126,7 +126,7 @@ export const dummyBooks = [
     category: "Academic",
     date: 1716634345448,
     popular: false,
-    inStock: true,
+    inStock: false,
   },
   {
     _id: "4",
@@ -176,7 +176,7 @@ export const dummyBooks = [
     category: "Children",
     date: 1716634345448,
     popular: false,
-    inStock: true,
+    inStock: false,
   },
   {
     _id: "8",

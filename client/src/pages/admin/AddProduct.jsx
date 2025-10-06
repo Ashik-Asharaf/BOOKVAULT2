@@ -10,7 +10,7 @@ const AddProduct = () => {
     const [price, setPrice] = useState("100")
     const [category, setCategory] = useState("Academic")
     const [offerPrice, setOfferPrice] = useState("100")
-    const [popular, setPopPlar] = useState(false)
+    const [popular, setPopular] = useState(false)
 
     const onSubmitHandler = (event) => {
         event.preventDefault()
