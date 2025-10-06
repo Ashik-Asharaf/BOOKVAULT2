@@ -9,6 +9,7 @@ const Item = ({book,fromHero}) => {
   return book? (
     <div onClick={()=>{
       navigate(`/shop/${book.category}/${book._id}`)
+      scroll(0,0)
     }}
      className={`overflow-hidden sm:p-4 ${fromHero ? "bg-white": "sm:bg-primary"} rounded-xl`}>
       {/* IMAGE */}

@@ -17,6 +17,7 @@ const ShopContextProvider = ({children}) => {
     const [method, setMethod] = useState("COD") //COD or ONLINE
     const [showUserlogin, setShowUserlogin] = useState("")
     const delivery_charges = 50 // 50 rs
+    const [isAdmin, setIsAdmin] = useState(false)
 //fetch all books
 
 const fetchBooks= ()=> {
@@ -83,7 +84,7 @@ useEffect(()=>{
         searchQuery,setSearchQuery,cartItems,setCartItems,
         addToCart,getCartCount,updateQuantity,getCartAmount,
         method,setMethod, delivery_charges, showUserlogin,
-        setShowUserlogin} 
+        setShowUserlogin,setIsAdmin,isAdmin} 
 
   return (
     <ShopContext.Provider  value={value}>
