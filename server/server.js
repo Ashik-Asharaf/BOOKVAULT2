@@ -3,6 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import 'dotenv/config'
 import connectDB from "./config/mongodb.js"
+import userRoute from "./routes/userRoute.js";
 
 const app=express() //Initalize Express Application
 const port=process.env.PORT || 4000 //Define server port
@@ -25,6 +26,8 @@ app.use(cors({
 app.get('/',(req,res)=>{
     res.send("API successfully connected")
 })
+
+app.use("/api/user", userRoute);
 
 //Start the server
 app.listen(port, ()=> console.log(`Server running at http://localhost:${port}`))
